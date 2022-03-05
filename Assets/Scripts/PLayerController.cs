@@ -9,12 +9,13 @@ public class PLayerController : MonoBehaviour
     [SerializeField] float speed = 5.0f;
     [SerializeField] Animator animator;
     float smooth = 100.0f;
-    float xrange = 38.5f;
-    float yrange = 21f;
+    float xrange = 67.26f;
+    float yrange = 48.62f;
     bool Canshoot = true;
     [SerializeField] float FireRate = 0.5f;
     [SerializeField] float Nextshot = -1.0f;
     public GameObject projectilePrefab;
+    public  static int life = 3;
 
     void Start()
     {
@@ -23,10 +24,13 @@ public class PLayerController : MonoBehaviour
 
     void Update()
     {
+        if(life > 0)
+        {
         Mouvement();
         Animation();
         KeepInBound();
         LaunchMissiles();
+        }
     }
 
 
@@ -111,6 +115,14 @@ public class PLayerController : MonoBehaviour
             Nextshot = Time.time + FireRate;
         }
         
+    }
+
+    void OnTriggerEnter (Collider other)
+    {
+        if( other.CompareTag("Ennemy"))
+        {
+            life -= 1;
+        }
     }
 
 }

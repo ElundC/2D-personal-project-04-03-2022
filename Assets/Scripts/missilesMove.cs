@@ -6,8 +6,8 @@ public class missilesMove : MonoBehaviour
 {
     
     [SerializeField] float speed = 10.0f;
-    float xrange = 41f;
-    float yrange = 24f;
+    float xrange = 68.26f;
+    float yrange = 48.62f;
 
     void Start()
     {
@@ -26,10 +26,6 @@ public class missilesMove : MonoBehaviour
         if (other.gameObject.CompareTag("Ennemy"))
         {
             Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-        else 
-        {
             Destroy(gameObject);
         }
     }
